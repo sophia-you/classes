@@ -27,3 +27,11 @@ float VideoGames::getRating()
 {
   return rating;
 }
+
+void VideoGames::printGame()
+{
+  cout << "Title: " << title << endl;
+  cout << "Year: " << year << endl;
+  cout << "Publisher: " << publisher << endl;
+  cout << "Rating: " << rating << endl;
+}

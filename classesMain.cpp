@@ -13,7 +13,7 @@ using namespace std;
  * delete items in the media library. 
  */
 
-void addMedia(vector<Parent*> &mediaList)
+void addMedia(vector<Parent*> &mediaList);
 
 int main()
 {
@@ -39,20 +39,7 @@ int main()
   cin.getline(input, max);
   if (strcmp(input, "add") == 0)
     {
-      cout << "Enter one of the following media types. Only use lower case letters." << endl;
-      cout << "video games" << endl;
-      cout << "music" << endl;
-      cout << "movies" << endl;
-      cin.getline(input, max);
-      if (strcmp(input, "video games") == 0)
-	{
-	}
-      else if (strcmp(input, "music") == 0)
-        {
-        }
-      else if (strcmp(input, "movies") == 0)
-	{
-	}
+      addMedia(mediaList);
       
     }
   else if (strcmp(input, "search") == 0)
@@ -69,26 +56,44 @@ int main()
 // this function takes in user input and puts the media into a vector
 void addMedia(vector<Parent*> &mediaList)
 {
-  int max = 80;
+  int max = 100;
   char input[max];
 
+  cout << "First, enter some basic information." << endl;
+  cout << "Title: " << endl;
+  char* title = new char[100];
+  cin.getline(input, max); // reads in info
+  strcpy(title, input);
+
+  cout << "Year Released: " << endl;
+  int year = 0;
+  cin >> year; // reads in info
+  cin.ignore(max, '\n');
+  
   // specify the media type
-   cout << "Enter one of the following media types. Only use lower case lett\
+  cout << "Enter one of the following media types. Only use lower case lett\
 ers." << endl;
-      cout << "video games" << endl;
-      cout << "music" << endl;
-      cout << "movies" << endl;
-      cin.getline(input, max);
+  cout << "video games" << endl;
+  cout << "movies" << endl;
+  cout << "music" << endl;
+  cin.getline(input, max);
+       
       if (strcmp(input, "video games") == 0)
-        { // START HERE
-	  cout << "Title: " << endl;
-	  char* gameTitle = new char[100];
-	  strcpy(gameTitle, "hello");
-	  cout << "Year Released: " << endl;
+        {
 	  cout << "Publisher: " << endl;
+	  char* publisher = new char[100];
+	  cin.getline(input, max); // reads in info
+	  strcpy(publisher, input);
+
+
 	  cout << "Rating: " << endl;
-	  VideoGames* videoGame = new VideoGames(); // this goes in the vector
+	  float rating = 0;
+	  cin >> rating; // reads in info
+	  cin.ignore(max, '\n');
 	  
+	  
+	  VideoGames* videoGame = new VideoGames(title, year, publisher, rating); // this goes in the vector
+	  videoGame->printGame();
         }
       else if (strcmp(input, "music") == 0)
         {
