@@ -29,3 +29,9 @@ int Parent::getYear()
 {
   return year;
 }
+
+void Parent::print()
+{
+  cout << title << endl;
+  cout << year << endl;
+}

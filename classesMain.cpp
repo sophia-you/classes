@@ -14,6 +14,7 @@ using namespace std;
  */
 
 void addMedia(vector<Parent*> &mediaList);
+void searchMedia(vector<Parent*> &mediaList);
 
 int main()
 {
@@ -29,8 +30,11 @@ int main()
   
   // This vector will hold all types of media
   vector<Parent*> mediaList;
+  int editing = 1; // checks to see if the user wants to quit
   
   cout << "Welcome to the media library. Please enter a command." << endl;
+  while (editing !=0)
+    {
   cout << "Type 'add' to add a type of media." << endl;
   cout << "Type 'search' to search for media in a database." << endl;
   cout << "Type 'delete' to delete an item from the library." << endl;
@@ -39,15 +43,18 @@ int main()
   cin.getline(input, max);
   if (strcmp(input, "add") == 0)
     {
-      addMedia(mediaList);
-      
+      addMedia(mediaList); 
     }
   else if (strcmp(input, "search") == 0)
     {
-      
+      searchMedia(mediaList);
     }
   else if (strcmp(input, "delete") == 0)
     {
+    }
+  cout << "Enter '1' to continue using the media library. Enter '0' to quit." << endl;
+  cin >> editing;
+  cin.ignore(max, '\n');
     }
   
   return 0;
@@ -67,8 +74,9 @@ void addMedia(vector<Parent*> &mediaList)
 
   cout << "Year Released: " << endl;
   int year = 0;
-  cin >> year; // reads in info
+  cin >> year;
   cin.ignore(max, '\n');
+  // reads in info
   
   // specify the media type
   cout << "Enter one of the following media types. Only use lower case lett\
@@ -91,9 +99,11 @@ ers." << endl;
 	  cin >> rating; // reads in info
 	  cin.ignore(max, '\n');
 	  
-	  
 	  VideoGames* videoGame = new VideoGames(title, year, publisher, rating); // this goes in the vector
-	  videoGame->printGame();
+	  mediaList.push_back(videoGame); // adds to vector
+	  cout << "You have now added a new game." << endl;
+	  videoGame->print(); // prints out entered info
+	  
         }
       else if (strcmp(input, "music") == 0)
         {
@@ -101,4 +111,42 @@ ers." << endl;
       else if (strcmp(input, "movies") == 0)
         {
         }
+}
+
+// this function allows the user to search for media by title or year.
+void searchMedia(vector<Parent*> &mediaList)
+{
+  cout << "If searching by title, enter 'title'. If searching by year, enter 'year.' Lower case letters only!" << endl;
+  int max = 80;
+  char input[max];
+  cin.getline(input, max);
+  if (strcmp(input, "title") == 0)
+    {
+      cout << "Enter title: " << endl;
+      cin.getline(input, max);
+      // walk through the vector and find the occurances
+      for (vector<Parent*>::iterator it = mediaList.begin(); it !=mediaList.end(); it++)
+	{
+	  if(strcmp(input, (*it)->getTitle()) == 0)
+	    {
+	      (*it)->print();
+	    }
+	}
+    }
+  else if (strcmp(input, "year") == 0)
+    {
+      int year = 0;
+      cout << "Enter year: " << endl;
+      cin >> year;
+      cin.ignore(max, '\n');
+            // walk through the vector and find the occurances
+      for (vector<Parent*>::iterator it = mediaList.begin(); it !=mediaList.end\
+(); it++)
+        {
+          if(year == (*it)->getYear())
+            {
+              (*it)->print();
+            }// START HEREEEEEE!!!!!!!!
+        }
+    }
 }
