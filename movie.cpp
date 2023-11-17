@@ -42,7 +42,7 @@ float Movie::getRating() // returns rating
   return rating;
 }
 
-void Movie::print()
+void Movie::print() // prints info
 {
   cout << "Type: Movie" << endl;
   cout << "Title: " << title << endl;

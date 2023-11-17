@@ -163,12 +163,12 @@ void searchMedia(vector<Parent*> &mediaList)
     {
       cout << "Enter title: " << endl;
       cin.getline(input, max);
-      // walk through the vector and find the occurances
+      // walk through the vector and find the occurences
       for (vector<Parent*>::iterator it = mediaList.begin(); it !=mediaList.end(); it++)
 	{
 	  if(strcmp(input, (*it)->getTitle()) == 0)
 	    {
-	      (*it)->print();
+	      (*it)->print(); // print out the media information
 	    }
 	}
     }
@@ -217,17 +217,17 @@ void deleteMedia(vector<Parent*> &mediaList)
               (*it)->print(); // print the media first
 	      cout << "Delete this item? Enter 'yes' or 'no.' Lower case letters only." << endl;
 	      cin.getline(confirm, max);
-	      if (strcmp(confirm, "yes") == 0) // if they confirm, delete
+	      if (strcmp(confirm, "yes") == 0) // if they confirm, delete, otherwise move on
 		{
 		  cout << "Item deleted." << endl;
 		  delete *it; // delete the actual media
 		  mediaList.erase(it); // delete the pointer in memory
-		  break;
+		  break; 
 		}
             }
 	}
     }
-  else if (strcmp(input, "year") == 0)
+  else if (strcmp(input, "year") == 0) // searching by year
     {
       cout << "Enter year: " << endl;
       cin >> year;

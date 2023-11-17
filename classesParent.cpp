@@ -11,7 +11,7 @@ Parent::Parent() // default constructor
   
 }
 
-// user sets parent fields?
+// user sets parent fields
 Parent::Parent(char* newtitle, int newyear)
 {
   title = new char[100];
@@ -20,22 +20,22 @@ Parent::Parent(char* newtitle, int newyear)
   
 }
 
-Parent::~Parent()
+Parent::~Parent() // destructor
 {
   delete title;
 }
 
-char* Parent::getTitle()
+char* Parent::getTitle() // returns title
 {
   return title; 
 }
 
-int Parent::getYear()
+int Parent::getYear() // returns year
 {
   return year;
 }
 
-void Parent::print()
+void Parent::print() // virtual function, this doesn't actually get called
 {
   cout << title << endl;
   cout << year << endl;

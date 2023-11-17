@@ -7,15 +7,15 @@ using namespace std;
 // cpp file for video games
 VideoGames::VideoGames() // default constructor
 {
-  publisher = new char[100];
-  rating = 0.0;
+  publisher = new char[100]; // char pointer
+  rating = 0.0; // float
 }
 
 // constructor with fields
 VideoGames::VideoGames(char* newtitle, int newyear, char* newpublisher, float newrating): Parent(newtitle, newyear)
 {
   publisher = new char[100];
-  strcpy(publisher, newpublisher);
+  strcpy(publisher, newpublisher); // user input "newpublisher" goes into the "publisher" field
   rating = newrating;
 }
 
@@ -31,11 +31,13 @@ char* VideoGames::getPublisher()
   return publisher;
 }
 
+// returns rating
 float VideoGames::getRating()
 {
   return rating;
 }
 
+// prints all the info
 void VideoGames::print()
 {
   cout << "" << endl;

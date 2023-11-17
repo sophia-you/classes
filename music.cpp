@@ -47,6 +47,7 @@ char* Music::getPublisher()
   return publisher;
 }
 
+// prints out all the info
 void Music::print()
 {
   cout << "Type: Music" << endl;
