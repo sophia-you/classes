@@ -20,6 +20,11 @@ Parent::Parent(char* newtitle, int newyear)
   
 }
 
+Parent::~Parent()
+{
+  delete title;
+}
+
 char* Parent::getTitle()
 {
   return title; 

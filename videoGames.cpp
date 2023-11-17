@@ -11,6 +11,7 @@ VideoGames::VideoGames() // default constructor
   rating = 0.0;
 }
 
+// constructor with fields
 VideoGames::VideoGames(char* newtitle, int newyear, char* newpublisher, float newrating): Parent(newtitle, newyear)
 {
   publisher = new char[100];
@@ -18,6 +19,13 @@ VideoGames::VideoGames(char* newtitle, int newyear, char* newpublisher, float ne
   rating = newrating;
 }
 
+// destructor
+VideoGames::~VideoGames()
+{
+  delete publisher;
+}
+
+// returns publisher
 char* VideoGames::getPublisher()
 {
   return publisher;
@@ -30,6 +38,7 @@ float VideoGames::getRating()
 
 void VideoGames::print()
 {
+  cout << "" << endl;
   cout << "Type: Video Game" << endl;
   cout << "Title: " << title << endl;
   cout << "Year: " << year << endl;
