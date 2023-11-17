@@ -9,10 +9,10 @@ class Parent
 public:
   Parent(); // default constructor
   Parent(char*, int); // reads in values provided in the main method
-  virtual ~Parent();
-  char* getTitle();
-  int getYear();
-  virtual void print();
+  virtual ~Parent(); // destructor
+  char* getTitle(); // returns title
+  int getYear(); // returns year
+  virtual void print(); // prints all info
  protected: // these can be used by the children
   char* title;
   int year;

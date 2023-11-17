@@ -5,7 +5,7 @@
 #include "classesParent.h"
 using namespace std;
 
-//header file for the video games class, which is a child of parent
+// header file for the movie class, which is a child of parent
 class Movie : public Parent
 {
  public:

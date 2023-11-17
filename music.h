@@ -5,6 +5,7 @@
 #include "classesParent.h"
 using namespace std;
 
+// header file for music
 class Music : public Parent
 {
  public:
